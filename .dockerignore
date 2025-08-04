@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.DS_Store
+.env
+venv/
+.idea/
+*.pem
+*.zip
+.git/
+OneDrive/
