@@ -11,8 +11,6 @@ from rag_pipeline import get_qa_chain
 import json
 import boto3
 
-qa_chain = get_qa_chain()
-
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -64,7 +62,10 @@ def chat_node(state: ChatState):
     latest_user_msg = next((msg.content for msg in reversed(messages) if isinstance(msg, HumanMessage)), None)
     if latest_user_msg is None:
         return {'messages': [AIMessage(content="Sorry, I didn't understand your input.")]}
-
+    
+    # Dynamically get QA chain using selected folders
+    qa_chain = get_qa_chain(state.get("selected_folders", []))
+    
     # Get answer from QA chain
     response = qa_chain.run(latest_user_msg)
     return {'messages':[response]}
