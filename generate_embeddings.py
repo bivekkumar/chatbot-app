@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Load + Split
-loader = PyMuPDFLoader("Resume.pdf")
+loader = PyMuPDFLoader("C:\\Users\\Bivek\\OneDrive\\Desktop\\PERSONAL\\BIVEK\\AI\\Docs\\Individual_Profile.pdf")
 documents = loader.load()
 
 splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
@@ -26,5 +26,5 @@ vectorstore.save_local(faiss_dir)
 
 # Upload to S3
 s3 = boto3.client('s3')
-s3.upload_file("app/faiss_index/index.faiss", "bivek-embedding-bucket-2025", "resume/index.faiss")
-s3.upload_file("app/faiss_index/index.pkl", "bivek-embedding-bucket-2025", "resume/index.pkl")
+s3.upload_file("app/faiss_index/index.faiss", "bivek-embedding-bucket-2025", "personality/index.faiss")
+s3.upload_file("app/faiss_index/index.pkl", "bivek-embedding-bucket-2025", "personality/index.pkl")
