@@ -21,4 +21,4 @@ RUN pip install --upgrade pip \
 COPY . .
 
 # Run the chatbot Streamlit app
-CMD ["streamlit", "run", "bot_frontend.py", "--server.port=8501", "--server.enableCORS=false"]
+CMD ["streamlit", "run", "bot_frontend.py", "--server.port=8080", "--server.enableCORS=false"]
